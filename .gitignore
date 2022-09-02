@@ -1,0 +1,6 @@
+mongo/db/
+mongo/configdb/
+
+mysql/db/
+!mysql/db/my.cnf 
+

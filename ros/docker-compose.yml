@@ -1,0 +1,8 @@
+version: '3'
+services:
+  ros-master:
+    image: tiryoh/ros-desktop-vnc:melodic
+    tty: true
+    ports:
+      - 8080:80
+    container_name: 'myros'
