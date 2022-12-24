@@ -4,3 +4,4 @@ mongo/configdb/
 mysql/db/*
 !mysql/db/my.cnf 
 
+postgres/data

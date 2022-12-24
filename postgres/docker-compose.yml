@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: pass
+      PGPASSWORD: pass
+      POSTGRES_DB: sample
+      TZ: "Asia/Tokyo"
+
+      LANGUAGE: "en_US.UTF-8"
+      LANG: "en_US.UTF-8"
+      LC_ALL: "en_US.UTF-8"
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./postgresgl.conf:/etc/postgresql.conf
+
