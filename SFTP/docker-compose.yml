@@ -1,0 +1,14 @@
+version: '3'
+services:
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - ./upload:/home/foo/upload # sync upload directory
+      - etc_ssh:/etc/ssh
+    ports:
+      - "2222:22"
+    command: "foo:pass:::upload"
+volumes:
+  etc_ssh:
+    driver: local
+
