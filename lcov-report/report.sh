@@ -14,15 +14,21 @@ fi
 
 cd /src
 
+mkdir build && cd build
+git checkout develop
 git submodule update --init --recursive
 
-mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Coverage
+cd tests
 make -j8
 ctest --output-on-failure
 
 # generate html file
 lcov --capture --directory . --output-file lcov.info
+
+# サードパーティと/usr/includeディレクトリのCoverageを除外
+lcov --remove lcov.info '/usr/include*' '/src/build/' '11*' 'spdlog*' -o extract.info
+
 genhtml lcov.info -o html
 
 cd html 
