@@ -5,7 +5,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
-    apt install software-properties-common -y \
+    apt install software-properties-common -y && \
     add-apt-repository ppa:apt-fast/stable  && \
     apt-get update  && \
     apt-get -y install apt-fast
