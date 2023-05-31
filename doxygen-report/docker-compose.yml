@@ -1,0 +1,19 @@
+# example
+version: '3'
+services:
+  doxygen_report:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: doxygen-report
+    restart: always
+    command: /bin/bash -c "while true; do sleep 24h && /bin/bash /scripts/my_script.sh; done"
+    volumes:
+      - "./ssh:/root/.ssh:ro"
+    environment:
+      repo: "YOUR_REPO"
+    command: bash /app/gen_doxygen.sh
+    ports: 
+     - "8080:80"
+
+  

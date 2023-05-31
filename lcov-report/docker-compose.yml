@@ -1,0 +1,15 @@
+# example
+version: '3'
+services:
+  lcov-report:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    command: /bin/bash -c "while true; do sleep 24h && /bin/bash /scripts/my_script.sh; done"
+    environment:
+      repo: "git@github.com:AKARI-Inc/melchior.git"
+    ports: 
+     - "8080:80"
+
+  
