@@ -29,7 +29,7 @@ lcov --capture --directory . --output-file lcov.info
 # サードパーティと/usr/includeディレクトリのCoverageを除外
 lcov --remove lcov.info '/usr/include*' '/src/build/' '11*' 'spdlog*' -o extract.info
 
-genhtml lcov.info -o html
+genhtml extract.info -o html
 
 cd html 
 http-server -p 80
