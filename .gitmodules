@@ -1,0 +1,3 @@
+[submodule "mkdocs/src"]
+	path = mkdocs/src
+	url = git@github.com:20niship/cognition-docs.git
