@@ -1,0 +1,27 @@
+version: '3'
+
+volumes:
+  nextcloud:
+  db:
+
+services:
+  nextcloud-db:
+    image: mariadb
+    restart: always
+    container_name: vm-nextcloud-db
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${ENV_MYSQL_ROOT_PASSWORD}  # .envファイルに環境変数を設定
+      - MYSQL_PASSWORD=${ENV_MYSQL_PASSWORD}  # .envファイルに環境変数を設定
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+  nextcloud-app:
+    image: nextcloud
+    container_name: vm-nextcloud-app
+    links:
+      - nextcloud-db
+    volumes:
+      - ./storage:/var/www/html
+    restart: always
+
