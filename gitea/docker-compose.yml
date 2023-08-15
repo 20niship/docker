@@ -71,16 +71,16 @@ services:
       # https://docs.drone.io/runner/docker/installation/linux/
       # https://docs.drone.io/server/metrics/
       - DRONE_RPC_PROTO=http
-      - DRONE_RPC_HOST=10.254.249.87:8090
+      - DRONE_RPC_HOST=10.254.249.87
       - DRONE_RPC_SECRET=123456789_test_secret_gitea_holsdfoifeuawrldkv
       - DRONE_RUNNER_NAME="gitea-drone-runner"
       # ランナーが実行できる同時パイプラインの数
       - DRONE_RUNNER_CAPACITY=2
       # - DRONE_DEBUG=false
       # - DRONE_RUNNER_ENV_FILE="/etc/drone.env"
-      - DRONE_TRACE=true
-      - DRONE_RPC_DUMP_HTTP=true
-      - DRONE_RPC_DUMP_HTTP_BODY=true
+      # - DRONE_TRACE=true
+      # - DRONE_RPC_DUMP_HTTP=true
+      # - DRONE_RPC_DUMP_HTTP_BODY=true
     ports:
       - "3002:3000"
     networks:
