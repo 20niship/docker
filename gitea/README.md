@@ -1,6 +1,10 @@
 # GiteaとDroneでセルフホストのGitサーバーとCIサーバーをたてる
 
+## Gitea Actionsがリリースされたのでそっちを使う
 
+https://qiita.com/sinsky/items/5ab6017f82548f9e35e6
+
+## 旧バージョン（Drone使用）
 - 手順
   - docker-compose upした後、
   - Giteaの初期設定画面で管理者アカウントの設定をする。

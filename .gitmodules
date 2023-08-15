@@ -1,3 +1,6 @@
 [submodule "mkdocs/src"]
 	path = mkdocs/src
 	url = git@github.com:20niship/cognition-docs.git
+[submodule "gitea/act_runner"]
+	path = gitea/act_runner
+	url = https://gitea.com/gitea/act_runner
