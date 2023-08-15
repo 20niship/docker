@@ -12,6 +12,10 @@ services:
       - GITEA__database__NAME=gitea
       - GITEA__database__USER=gitea
       - GITEA__database__PASSWD=gitea
+      #  これはWebhookの呼び出しホストの設定で、すべてのホストを許可にしている。
+      #   外部に公開されているネットワークの場合は確認すること。
+      #   https://damu3.com/projects/jenkins/wiki/(2)Gitea%E3%81%8B%E3%82%89%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E3%83%93%E3%83%AB%E3%83%89%EF%BC%86%E3%83%86%E3%82%B9%E3%83%88
+      - GITEA__webhook__ALLOWED_HOST_LIST=*
     restart: always
     networks:
       gitea_network:
@@ -40,7 +44,7 @@ services:
       - TZ=Japan
       - DRONE_GIT_ALWAYS_AUTH=false
       # 必要な文字列値は、外部ホスト名またはIPアドレス
-      - DRONE_SERVER_HOST=10.254.249.87:8090
+      - DRONE_SERVER_HOST=10.254.249.87
       - DRONE_SERVER_PROTO=http
       - DRONE_TLS_AUTOCERT=false
       - DRONE_RPC_SECRET=123456789_test_secret_gitea_holsdfoifeuawrldkv
@@ -76,7 +80,7 @@ services:
       - DRONE_RUNNER_NAME="gitea-drone-runner"
       # ランナーが実行できる同時パイプラインの数
       - DRONE_RUNNER_CAPACITY=2
-      # - DRONE_DEBUG=false
+      - DRONE_DEBUG=false
       # - DRONE_RUNNER_ENV_FILE="/etc/drone.env"
       # - DRONE_TRACE=true
       # - DRONE_RPC_DUMP_HTTP=true
