@@ -2,7 +2,34 @@
 
 ## Gitea Actionsがリリースされたのでそっちを使う
 
-https://qiita.com/sinsky/items/5ab6017f82548f9e35e6
+- https://qiita.com/sinsky/items/5ab6017f82548f9e35e6
+- デフォルトでは、actのバージョンがMinimumなため、ubuntu-latestとしてもnodejsのイメージがぷるされる
+  - そのため、./runner/config.yamlのラベルにあるようにイメージのタグを指定し、それをCONFIG_FILEで実行時に指定すること
+  - https://docs.gitea.com/usage/actions/act-runner#runner-levels
+  - 例：
+```yaml
+services:
+# docker-compose.ymlで、
+  runner:
+     build:
+       context: ./act_runner
+       dockerfile: Dockerfile
+     container_name: vm-gitea-runner
+     restart: always
+     environment:
+       GITEA_INSTANCE_URL: http://10.254.249.89
+       GITEA_RUNNER_REGISTRATION_TOKEN: LXv621V6pMJPsLRE1PDEEAYvQUgNzIOUpVpWtYpl
+       GITEA_RUNNER_NAME: test-runner
+       GITEA_RUNNER_LABELS: ubuntu-latest,ubuntu-22.04,ubuntu-20.04,ubuntu-18.04
+       CONFIG_FILE: /runner/config.yaml
+     networks:
+       gitea_network:
+     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./runner/:/runner:ro
+
+  db:
+```
 
 ## 旧バージョン（Drone使用）
 - 手順
@@ -27,3 +54,4 @@ https://qiita.com/sinsky/items/5ab6017f82548f9e35e6
     - Droneのアカウント登録画面になるので登録する
       - 成功すると、`.drone.yml`があるレポジトリが表示されているはずなので、そいつをActivateする
     - Droneの画面の右上の「New Build」ボタンから新しくCIを追加できる
+
