@@ -11,3 +11,10 @@ gitea/drone
 gitea/gitea/
 *.swp
 runner-env
+
+.env
+nextcloud/storage
+nextcloud/
+
+doxygen-report/src/
+
