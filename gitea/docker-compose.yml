@@ -26,7 +26,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "3000:3000"
-      - "222:22"
     depends_on:
       - db
 
@@ -38,11 +37,15 @@ services:
      restart: always
      environment:
        GITEA_INSTANCE_URL: http://10.254.249.89:3000
-       GITEA_RUNNER_REGISTRATION_TOKEN: kXd11zLueggu3NBlPlDZMyAPWmhznj5oM7M6wokn
+       GITEA_RUNNER_REGISTRATION_TOKEN: JCL841SY6sbJ9xMKB8PzANe7w7toiA5HbtPBCT9x
        GITEA_RUNNER_NAME: test-runner
        GITEA_RUNNER_LABELS: ubuntu-latest,ubuntu-22.04,ubuntu-20.04,ubuntu-18.04
+       CONFIG_FILE: /runner/config.yaml
      networks:
        gitea_network:
+     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./runner/:/runner:ro
 
   # drone:
   #   container_name: vm-gitea-drone
