@@ -36,6 +36,8 @@ runner:
   labels: [
     "ubuntu-latest:docker://catthehacker/ubuntu:full-latest",
     "ubuntu-22.04:docker://catthehacker/ubuntu:22.04",
+    "debian:docker://debian",
+    "melchior:docker://20niship/melchior-base:debian"
   ]
     
 cache:
