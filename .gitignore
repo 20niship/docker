@@ -20,3 +20,6 @@ doxygen-report/src/
 
 netdata/config 
 !netdata/config/netada.conf
+
+docker-compose.override.yml
+
